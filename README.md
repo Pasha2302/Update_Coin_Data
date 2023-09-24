@@ -6,8 +6,10 @@
 
 # Запустите контейнер с базой данных MySql:
     ### Загрузка образа MySql с параметрами:
-    - docker run --name mysql_docker -v /home/pavelpc/mysql_data_docker/data_v01:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=passroot -e MYSQL_USER=pavelpc01 -e MYSQL_PASSWORD=passuser -p -d mysql:8.1.0
-
+    - docker run --name mysql_docker -v /home/pavelpc/mysql_data_docker/data_v01:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=passroot -d mysql:8.1.0
+    
+    ('это путь до директории где будет хранить сои данны MySql запущенная в Docker:
+    /home/pavelpc/mysql_data_docker/data_v01 Создайте свою директорию и укажите свой путь.')
 
 ### Создание пользователя и передачи ему прав Root:
     - docker exec -it mysql_docker bash (Если mysql в Docker контейнере)
