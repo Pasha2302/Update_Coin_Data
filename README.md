@@ -1,0 +1,25 @@
+# Установите докер:
+    - https://docs.docker.com/engine/install/ubuntu/
+
+# Создайте образ с Python3.11 с помошью файла Docker:
+    - docker build -t my_custom_image .  (Запускайте команду из дериктории программы [.] - текушая дериктория.)
+
+# Запустите контейнер с базой данных MySql:
+    ### Загрузка образа MySql с параметрами:
+    - docker run --name mysql_docker -v /home/pavelpc/mysql_data_docker/data_v01:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=passroot -e MYSQL_USER=pavelpc01 -e MYSQL_PASSWORD=passuser -p -d mysql:8.1.0
+
+
+### Создание пользователя и передачи ему прав Root:
+    - docker exec -it mysql_docker bash (Если mysql в Docker контейнере)
+
+    - mysql -u root -p (Входим как root)
+
+    - CREATE USER 'new_user'@'%' IDENTIFIED BY 'new_password';  (Создаем пользователя)
+
+    - FLUSH PRIVILEGES;   (Обновляем привелегии.)
+
+
+# Запустите скрипт из созданного образа python3.11 в контейнере:
+    - docker run -d -v $(pwd):/app -p 5000:5000 <имя образа или id>
+
+
